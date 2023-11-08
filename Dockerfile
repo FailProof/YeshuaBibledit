@@ -1,15 +1,18 @@
-# Use an official base image
+# Use an official Ubuntu base image
 FROM ubuntu:20.04
 
-# Install any dependencies
+# Avoid prompts from apt
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install dependencies and add Bibledit repository
 RUN apt-get update && apt-get install -y \
     software-properties-common \
     && add-apt-repository ppa:bibledit/ppa \
     && apt-get update \
-    && apt-get install -y bibledit
+    && apt-get install -y bibledit-cloud
 
-# Expose the port Bibledit runs on
+# Expose the port Bibledit Cloud runs on
 EXPOSE 8080
 
-# Define the command to run the app
-CMD ["bibledit"]
+# Start Bibledit Cloud
+CMD ["bibledit-cloud"]
