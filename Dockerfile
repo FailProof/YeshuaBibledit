@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get install -y bibledit-cloud
 
 # Expose the port Bibledit Cloud runs on
-EXPOSE 80
+EXPOSE 8080
 
 # Start Bibledit Cloud
 CMD ["bibledit-cloud"]
